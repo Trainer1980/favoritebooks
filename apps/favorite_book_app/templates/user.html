@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Favorite Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+</head>
+<body>
+    <div class='header'>
+        <h1>Welcome, {{ user.first_name }}!</h1>
+        <a href="/books" ><button class='log_form'>Home</button></a>
+        <form action='/logout' method='post'>
+            {% csrf_token %}
+        <button type='submit' class='log_form'>Log Out</button>
+        </form>
+    </div>
+    <div class='book'>
+        <h2>Your Favorite Books:</h2>
+        <ul>
+            {% for book in books %}
+                <p><li>{{ book.title }}</li></p>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
